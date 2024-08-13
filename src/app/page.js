@@ -1,16 +1,20 @@
 "use client";
 import { Box, Button, Slider, TextField } from "@mui/material";
-import Image from "next/image";
 import EditOffIcon from "@mui/icons-material/EditOff";
-import { EditOff } from "@mui/icons-material";
 import { useState } from "react";
+
 export default function Home() {
   const [result, setResult] = useState("");
   const [userInput, setUserInput] = useState();
   const [paraphraseValue, setParaphraseValue] = useState(5);
 
   return (
-    <Box className="min-h-screen bg-gray-100">
+    <Box className="min-h-screen bg-gray-200">
+      <Box className="flex justify-center p-4">
+        <EditOffIcon fontSize="large" />
+        <p className="text-2xl">SuperPhrase AI</p>
+      </Box>
+
       <Box className="flex p-4 justify-center">
         <Box className="w-1/2 border border-black max-w-lg ">
           <TextField
