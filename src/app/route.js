@@ -24,7 +24,7 @@ Always strive to maintain the original meaning and tone of the text, regardless 
 Remember to ask for clarification if the original text is ambiguous or if you need more context to provide an accurate paraphrase. Your goal is to deliver high-quality paraphrasing that meets each user's specific needs as indicated by their scroll bar setting.`
 
 export async function POST(req) {
-    const openai = new OpenAI();
+    const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
     const data = await req.json();
 
     const { userInput, intensity } = data;
