@@ -1,12 +1,25 @@
 "use client";
 import { Box, Button, Slider, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { EditOff } from "@mui/icons-material";
 
 export default function Home() {
   const [result, setResult] = useState("");
   const [userInput, setUserInput] = useState("");
   const [paraphraseValue, setParaphraseValue] = useState(5);
+
+  const handleParaphrase = async () => {
+    const response = await fetch("/api/chat/route", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userInput, paraphraseValue }),
+    });
+
+    const data = await response.json();
+    setResult(data.paraphrasedText);
+  };
 
   return (
     <Box className="min-h-screen bg-gray-200">
@@ -33,7 +46,7 @@ export default function Home() {
             onChange={(event) => setUserInput(event.target.value)}
           />
           <Box className="flex justify-end p-2">
-            <Button variant="contained" color="success">
+            <Button variant="contained" color="success"  onClick={() => handleParaphrase}>
               Paraphrase
             </Button>
           </Box>
