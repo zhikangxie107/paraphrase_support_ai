@@ -27,9 +27,9 @@ export async function POST(req) {
     const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
     const data = await req.json();
 
-    const { userInput, intensity } = data;
+    const { userInput, paraphraseValue } = data;
 
-    const userPrompt = `The user has requested paraphrasing with an intensity level of ${intensity}. Please rephrase the following text accordingly:\n\n"${userInput}"`;
+    const userPrompt = `The user has requested paraphrasing with an intensity level of ${paraphraseValue}. Please rephrase the following text accordingly:\n\n"${userInput}"`;
 
     
 
