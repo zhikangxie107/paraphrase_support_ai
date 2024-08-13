@@ -1,4 +1,4 @@
-import { Box, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
 import EditOffIcon from "@mui/icons-material/EditOff";
 import { EditOff } from "@mui/icons-material";
@@ -11,7 +11,7 @@ export default function Home() {
       </Box>
 
       <Box className="flex p-4 h-[90%] justify-center">
-        <Box className="w-1/2   border border-black max-w-lg ">
+        <Box className="w-1/2 border border-black max-w-lg ">
           <TextField
             multiline
             fullWidth
@@ -25,13 +25,17 @@ export default function Home() {
               },
             }}
           />
+          <Box className="flex justify-end pr-2">
+            <Button variant="contained" color="success">
+              Paraphrase
+            </Button>
+          </Box>
         </Box>
         <Box className="w-1/2  border border-black max-w-lg">
           <TextField
             multiline
             fullWidth
             rows={27}
-            placeholder={"Enter Text Here"}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
@@ -39,6 +43,10 @@ export default function Home() {
                 },
               },
             }}
+            InputProps={{
+              readOnly: true,
+            }}
+            value={"test text"}
           />
         </Box>
       </Box>
