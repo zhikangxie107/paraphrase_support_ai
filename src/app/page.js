@@ -4,21 +4,35 @@ import { useEffect, useState } from "react";
 import { EditOff } from "@mui/icons-material";
 
 export default function Home() {
+
   const [result, setResult] = useState("");
   const [userInput, setUserInput] = useState("");
   const [paraphraseValue, setParaphraseValue] = useState(5);
 
   const handleParaphrase = async () => {
-    const response = await fetch("/api/chat/route", {
+    const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ userInput, paraphraseValue }),
+    }).then(async(res) => {
+      const reader = res.body.getReader()
+      const decoder = new TextDecoder()
+      let result = ''
+      return reader.read().then(function processText({done, value}){
+        if(done){
+          setResult(result)
+          return result
+        }
+        const text = decoder.decode(value || new Int8Array(), {stream: true})
+        result += text
+        return reader.read().then(processText)
+      })
     });
 
-    const data = await response.json();
-    setResult(data.paraphrasedText);
+    // const data = await response.json();
+    // setResult(data.paraphrasedText);
   };
 
   return (
@@ -46,7 +60,7 @@ export default function Home() {
             onChange={(event) => setUserInput(event.target.value)}
           />
           <Box className="flex justify-end p-2">
-            <Button variant="contained" color="success"  onClick={() => handleParaphrase}>
+            <Button variant="contained" color="success"  onClick={() => handleParaphrase()}>
               Paraphrase
             </Button>
           </Box>
