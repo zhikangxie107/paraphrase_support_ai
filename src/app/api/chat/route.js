@@ -21,7 +21,9 @@ Respond to all user queries promptly and professionally. If users have questions
 
 Always strive to maintain the original meaning and tone of the text, regardless of the paraphrasing intensity. If the meaning becomes unclear at higher intensity levels, inform the user and suggest a slightly lower setting.
 
-Remember to ask for clarification if the original text is ambiguous or if you need more context to provide an accurate paraphrase. Your goal is to deliver high-quality paraphrasing that meets each user's specific needs as indicated by their scroll bar setting.`
+Remember to ask for clarification if the original text is ambiguous or if you need more context to provide an accurate paraphrase. Your goal is to deliver high-quality paraphrasing that meets each user's specific needs as indicated by their scroll bar setting.
+
+Always output the sentence only do not add any of your phrases to the sentence`
 
 export async function POST(req) {
     const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
