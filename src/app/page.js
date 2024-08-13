@@ -1,21 +1,27 @@
-import { Box, Button, TextField } from "@mui/material";
+"use client";
+import { Box, Button, Slider, TextField } from "@mui/material";
 import Image from "next/image";
 import EditOffIcon from "@mui/icons-material/EditOff";
 import { EditOff } from "@mui/icons-material";
+import { useState } from "react";
 export default function Home() {
+  const [result, setResult] = useState("");
+  const [userInput, setUserInput] = useState();
+  const [paraphraseValue, setParaphraseValue] = useState(5);
+
   return (
-    <Box className="h-screen bg-gray-200">
+    <Box className="min-h-screen bg-gray-200">
       <Box className="flex justify-center p-4">
         <EditOffIcon fontSize="large" />
         <p className="text-2xl">SuperPhrase AI</p>
       </Box>
 
-      <Box className="flex p-4 h-[90%] justify-center">
+      <Box className="flex p-4 justify-center">
         <Box className="w-1/2 border border-black max-w-lg ">
           <TextField
             multiline
             fullWidth
-            rows={27}
+            rows={30}
             placeholder={"Enter Text Here"}
             sx={{
               "& .MuiOutlinedInput-root": {
@@ -24,18 +30,20 @@ export default function Home() {
                 },
               },
             }}
+            value={userInput}
+            onChange={(event) => setUserInput(event.target.value)}
           />
-          <Box className="flex justify-end pr-2">
+          <Box className="flex justify-end p-2">
             <Button variant="contained" color="success">
               Paraphrase
             </Button>
           </Box>
         </Box>
-        <Box className="w-1/2  border border-black max-w-lg">
+        <Box className="w-1/2 border border-black max-w-lg">
           <TextField
             multiline
             fullWidth
-            rows={27}
+            rows={30}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "& fieldset": {
@@ -46,8 +54,20 @@ export default function Home() {
             InputProps={{
               readOnly: true,
             }}
-            value={"test text"}
+            value={result}
           />
+          <Box className="py-2 px-5">
+            <Slider
+              marks
+              defaultValue={5}
+              steps={1}
+              max={10}
+              valueLabelDisplay="auto"
+              value={paraphraseValue}
+              onChange={(event) => setParaphraseValue(event.target.value)}
+              color="black"
+            />
+          </Box>
         </Box>
       </Box>
     </Box>
