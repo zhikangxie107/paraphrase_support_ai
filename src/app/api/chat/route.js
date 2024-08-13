@@ -11,7 +11,7 @@ Generate paraphrased text based on the intensity level selected.
 Adjust the paraphrasing strength when users move the scroll bar.
 
 Paraphrasing Intensity Guide:
-1-3: Light changes (synonym substitution, minor restructuring)
+0-3: Light changes (synonym substitution, minor restructuring)
 4-6: Moderate alterations (significant rewording, sentence restructuring)
 7-10: Heavy rephrasing (complete rewriting while preserving core meaning)
 
