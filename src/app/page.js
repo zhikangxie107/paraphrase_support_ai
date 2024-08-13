@@ -10,12 +10,6 @@ export default function Home() {
   const [paraphraseValue, setParaphraseValue] = useState(5);
 
   return (
-    <Box className="min-h-screen bg-gray-200">
-      <Box className="flex justify-center p-4">
-        <EditOffIcon fontSize="large" />
-        <p className="text-2xl">SuperPhrase AI</p>
-      </Box>
-
       <Box className="flex p-4 justify-center">
         <Box className="w-1/2 border border-black max-w-lg ">
           <TextField
