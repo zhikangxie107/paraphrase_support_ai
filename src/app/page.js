@@ -10,6 +10,7 @@ export default function Home() {
   const [paraphraseValue, setParaphraseValue] = useState(5);
 
   return (
+    <Box className="min-h-screen bg-gray-100">
       <Box className="flex p-4 justify-center">
         <Box className="w-1/2 border border-black max-w-lg ">
           <TextField
